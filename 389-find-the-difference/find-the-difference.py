@@ -20,4 +20,4 @@ class Solution:
                 return i
             count[i]-=1
         """
-        return chr(sum(ord(c) for c in t) - sum(ord(c) for c in s))
+        return chr(abs(sum(ord(i) for i in t) - sum(ord(i) for i in s)))
