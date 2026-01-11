@@ -5,9 +5,9 @@ class Solution:
         count = {}
         for i in range(len(s)):
             count[s[i]] = count.get(s[i],0) + 1
-        for i in count:
-            if count[i] == 1:
-                return s.find(i)
+        for i in range(len(s)):
+            if count[s[i]] == 1:
+                return i
         return ans
 
             
