@@ -12,7 +12,6 @@ class Solution:
                 sl[l],sl[r] = sl[r],sl[l]
                 l+=1
                 r-=1
-            print(i)
         return "".join(sl)
             
         
