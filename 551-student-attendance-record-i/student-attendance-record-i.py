@@ -1,6 +1,6 @@
 class Solution:
     def checkRecord(self, s: str) -> bool:
-        return s.count('A')<2 and 'LLL' not in s
+        #return s.count('A')<2 and 'LLL' not in s
         acount = 0
         i=0
         while i<len(s):
