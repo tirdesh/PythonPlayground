@@ -1,5 +1,6 @@
 class Solution:
     def singleNumber(self, nums: List[int]) -> int:
+        """
         seen = set()
         sm = 0
         for i in nums:
@@ -9,4 +10,8 @@ class Solution:
             else:
                 sm-=i
         return sm
-        
+        """
+        res = 0
+        for i in nums:
+            res^=i
+        return res
