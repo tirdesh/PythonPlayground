@@ -2,8 +2,7 @@ class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         mp = {}
         for i,v in enumerate(nums):
-            rem = target - v
-            if rem in mp:
-                return [i,mp[rem]]
+            if target-v in mp:
+                return [mp[target-v],i]
             mp[v] = i
         
