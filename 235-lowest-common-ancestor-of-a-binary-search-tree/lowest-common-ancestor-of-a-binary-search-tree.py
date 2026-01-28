@@ -16,6 +16,7 @@ class Solution:
             return root
         return left or right
         """
+        """
         while root:
             if p.val>root.val and q.val>root.val:
                 root = root.right
@@ -23,3 +24,10 @@ class Solution:
                 root = root.left
             else:
                 return root
+        """
+        if p.val>root.val and q.val>root.val:
+            return self.lowestCommonAncestor(root.right,p,q)
+        elif p.val<root.val and q.val<root.val:
+            return self.lowestCommonAncestor(root.left,p,q)
+        else:
+            return root
