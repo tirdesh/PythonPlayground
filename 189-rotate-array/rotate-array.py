@@ -3,8 +3,6 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        if len(nums)<2:
-            return nums
         def reverse(nums, i, j):
             while i<j:
                 nums[i],nums[j] = nums[j], nums[i]
