@@ -1,16 +1,12 @@
-from collections import deque
 class Solution:
     def isValid(self, s: str) -> bool:
-        mapChars = {")":"(","}":"{","]":"["}
-        arr = []
-        for i in s:
-            if i not in mapChars:
-                arr.append(i)
-            elif i in mapChars:
-                if len(arr)==0:
+        stack = []
+        mapping = {")":"(","}":"{","]":"["}
+        for char in s:
+            if char in mapping:
+                top_element=stack.pop() if stack else '#'
+                if mapping[char]!=top_element:
                     return False
-                val = arr.pop()
-                if val!=mapChars[i]:
-                    return False
-        return True if arr==[] else False
-            
+            else:
+                stack.append(char)
+        return not stack
