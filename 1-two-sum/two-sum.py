@@ -1,8 +1,9 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        mp = {}
-        for i,v in enumerate(nums):
-            if target-v in mp:
-                return [mp[target-v],i]
-            mp[v] = i
-        
+        num_map = {}
+        for i,num in enumerate(nums):
+            complement = target-num
+            if complement in num_map:
+                return[num_map[complement],i]
+            num_map[num]=i
+        return []
