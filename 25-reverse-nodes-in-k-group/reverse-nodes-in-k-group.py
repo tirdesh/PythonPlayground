@@ -9,33 +9,36 @@ class Solution:
         if not head or k <= 1:
             return head
 
+        # Single pass to count total nodes (avoids re-checking boundaries per group)
+        length = 0
+        curr = head
+        while curr:
+            length += 1
+            curr = curr.next
+
         dummy = ListNode(0, head)
         group_prev = dummy
 
-        def get_kth(curr: Optional[ListNode], k: int) -> Optional[ListNode]:
-            while curr and k > 0:
-                curr = curr.next
-                k -= 1
-            return curr
-
-        while True:
-            kth = get_kth(group_prev, k)
-            if not kth:
-                break
-
+        while length >= k:
+            # Locate the k-th node from group_prev
+            kth = group_prev
+            for _ in range(k):
+                kth = kth.next
             group_next = kth.next
 
-            # Reverse the k nodes between group_prev and group_next
+            # Reverse pointers within this k-length window
             prev, curr = group_next, group_prev.next
             while curr != group_next:
-                temp = curr.next
+                nxt = curr.next
                 curr.next = prev
                 prev = curr
-                curr = temp
+                curr = nxt
 
-            # Reconnect group_prev to new head, and advance group_prev
-            new_group_tail = group_prev.next
+            # Reconnect: group_prev -> new head (kth); advance to new tail
+            new_tail = group_prev.next
             group_prev.next = kth
-            group_prev = new_group_tail
+            group_prev = new_tail
+
+            length -= k
 
         return dummy.next
